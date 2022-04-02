@@ -1,0 +1,4 @@
+{
+    "githubPullRequests.defaultMergeMethod": "squash",
+    "git.ignoreLimitWarning": true,
+}
