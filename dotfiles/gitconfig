@@ -1,0 +1,12 @@
+[user]
+	name = kumachan-mis
+	email = 29433058+kumachan-mis@users.noreply.github.com
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore_global
+[color]
+	ui = auto
+[init]
+	defaultBranch = main
+[pull]
+	rebase = false

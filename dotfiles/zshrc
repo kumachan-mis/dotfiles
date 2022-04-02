@@ -1,0 +1,21 @@
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# Customize to your needs...
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+
+autoload -Uz compinit && compinit
+autoload -Uz vcs_info
+precmd_vcs_info() {
+    vcs_info
+}
+precmd_functions+=(
+    precmd_vcs_info
+)
+setopt prompt_subst
+zstyle ':vcs_info:git:*' formats '%b'
+
+. /usr/local/opt/asdf/asdf.sh
