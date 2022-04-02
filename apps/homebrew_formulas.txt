@@ -1,0 +1,11 @@
+zsh
+mas
+asdf
+cloc
+git
+gcc
+node
+yarn
+python
+docker
+docker-compose
