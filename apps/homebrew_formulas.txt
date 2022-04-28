@@ -7,5 +7,6 @@ gcc
 node
 yarn
 python
+poetry
 docker
 docker-compose
