@@ -19,4 +19,6 @@ precmd_functions+=(
 setopt prompt_subst
 zstyle ':vcs_info:git:*' formats '%b'
 
-. /usr/local/opt/asdf/asdf.sh
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+source $HOME/.docker/init-zsh.sh || true # Added by Docker Desktop
