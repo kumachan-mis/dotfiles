@@ -2,7 +2,7 @@
 	name = kumachan-mis
 	email = 29433058+kumachan-mis@users.noreply.github.com
 [core]
-	editor = "code -wait"
+	editor = "code --wait"
 	excludesfile = ~/.gitignore_global
 [color]
 	ui = auto
