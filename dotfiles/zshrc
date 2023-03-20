@@ -21,4 +21,4 @@ zstyle ':vcs_info:git:*' formats '%b'
 
 . /usr/local/opt/asdf/libexec/asdf.sh
 
-source ~/.docker/init-zsh.sh || true # Added by Docker Desktop
+source $HOME/.docker/init-zsh.sh || true # Added by Docker Desktop
