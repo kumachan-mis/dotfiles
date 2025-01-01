@@ -11,7 +11,7 @@ echo "creating symbolic links to dotfiles ..."
 dotfiles=$(ls ${BASE_DIR}/dotfiles)
 for dotfile in ${dotfiles}
 do
-    unlink -f ${HOME}/.${dotfile}
+    rm -rf ${HOME}/.${dotfile}
     ln -s ${BASE_DIR}/dotfiles/${dotfile} ${HOME}/.${dotfile}
 done
 
