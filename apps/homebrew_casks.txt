@@ -1,9 +1,6 @@
 visual-studio-code
-slack
 discord
-zoom
 docker
 google-chrome
 google-cloud-sdk
 firefox
-drawio
