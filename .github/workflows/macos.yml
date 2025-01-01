@@ -11,6 +11,4 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
-      - run: /bin/sh install_scripts/install.sh
-      - run: /bin/zsh install_scripts/install.zsh
-      - run: sudo sh -c "echo '/bin/zsh' >> /etc/shells"
+      - run: /bin/zsh install_scripts/install.sh

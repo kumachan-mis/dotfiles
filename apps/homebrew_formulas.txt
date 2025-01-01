@@ -1,7 +1,9 @@
 asdf
 firebase-cli
+java
 gcc
 git
+go
 node
 poetry
 python
