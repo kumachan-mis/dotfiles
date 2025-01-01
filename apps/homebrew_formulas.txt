@@ -1,5 +1,4 @@
 asdf
-docker
 firebase-cli
 gcc
 git
