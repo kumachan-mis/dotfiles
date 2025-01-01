@@ -1,5 +1,4 @@
 zsh
-mas
 asdf
 git
 gcc
