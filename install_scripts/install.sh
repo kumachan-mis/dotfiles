@@ -29,7 +29,7 @@ setopt EXTENDED_GLOB
 for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
     ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 done
-if [ -n '.zshrc' ]; then
+if [ -e '.zshrc' ]; then
     cat .zshrc >> ${ZDOTDIR:-$HOME}/.zshrc
 fi
 
