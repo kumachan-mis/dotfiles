@@ -1,9 +1,9 @@
 asdf
-git
-gcc
-node
-yarn
-python
-poetry
 docker
-docker-compose
+firebase-cli
+gcc
+git
+node
+poetry
+python
+yarn

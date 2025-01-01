@@ -1,6 +1,6 @@
-visual-studio-code
 discord
 docker
+firefox
 google-chrome
 google-cloud-sdk
-firefox
+visual-studio-code
