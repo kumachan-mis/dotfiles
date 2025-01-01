@@ -11,5 +11,4 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
-      - run: xcode-select --install
       - run: /bin/zsh install_scripts/install.sh
