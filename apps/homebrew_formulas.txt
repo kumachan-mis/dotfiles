@@ -1,12 +1,8 @@
-zsh
-mas
 asdf
-cloc
-git
+firebase-cli
 gcc
+git
 node
-yarn
-python
 poetry
-docker
-docker-compose
+python
+yarn
