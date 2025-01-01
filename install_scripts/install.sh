@@ -2,6 +2,21 @@
 
 BASE_DIR=$(cd $(dirname "$0")/../ && pwd)
 
+####################
+#     Dotfiles     #
+####################
+
+echo "creating symbolic links to dotfiles ..."
+
+dotfiles=$(ls ${BASE_DIR}/dotfiles)
+for dotfile in ${dotfiles}
+do
+    unlink -f ${HOME}/.${dotfile}
+    ln -s ${BASE_DIR}/dotfiles/${dotfile} ${HOME}/.${dotfile}
+done
+
+echo "symbolic links created!"
+
 ##################
 #     Prezto     #
 ##################
@@ -17,21 +32,6 @@ done
 cat .zshrc >> ${ZDOTDIR:-$HOME}/.zshrc
 
 echo "prezto installed!"
-
-####################
-#     Dotfiles     #
-####################
-
-echo "creating symbolic links to dotfiles ..."
-
-dotfiles=$(ls ${BASE_DIR}/dotfiles)
-for dotfile in ${dotfiles}
-do
-    unlink -f ${HOME}/.${dotfile}
-    ln -s ${BASE_DIR}/dotfiles/${dotfile} ${HOME}/.${dotfile}
-done
-
-echo "symbolic links created!"
 
 ####################
 #     Homebrew     #
