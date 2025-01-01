@@ -1,7 +1,6 @@
 zsh
 mas
 asdf
-cloc
 git
 gcc
 node
