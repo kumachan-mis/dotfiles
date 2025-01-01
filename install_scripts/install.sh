@@ -1,89 +1,61 @@
-#!/bin/sh
+#!/bin/zsh -e
 
 BASE_DIR=$(cd $(dirname "$0")/../ && pwd)
+
+##################
+#     Prezto     #
+##################
+
+echo "installing prezto ..."
+
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+ 
+setopt EXTENDED_GLOB
+for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+    ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+done
+cat .zshrc >> ${ZDOTDIR:-$HOME}/.zshrc
+
+echo "prezto installed!"
 
 ####################
 #     Dotfiles     #
 ####################
 
-echo "step 1/4: creating symbolic links to dotfiles ..."
+echo "creating symbolic links to dotfiles ..."
 
 dotfiles=$(ls ${BASE_DIR}/dotfiles)
 for dotfile in ${dotfiles}
 do
-    unlink ${HOME}/.${dotfile}
+    unlink -f ${HOME}/.${dotfile}
     ln -s ${BASE_DIR}/dotfiles/${dotfile} ${HOME}/.${dotfile}
 done
 
 echo "symbolic links created!"
 
-
-########################################
-#     Command line tools for Xcode     #
-########################################
-
-echo "step 2/4: installing command line tools ..."
-
-sudo rm -rf /Library/Developer/CommandLineTools
-xcode-select --install
-
-echo "command line tools installed!"
-
 ####################
 #     Homebrew     #
 ####################
 
-echo "step 3/4: installing homebrew ..."
-which brew 2>/dev/null || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-sudo mkdir -p /usr/local/Frameworks
-sudo chown -R $(whoami):admin /usr/local/Frameworks
+echo "installing homebrew ..."
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-echo "run brew doctor ..."
+echo "brew doctor ..."
 which brew 2>/dev/null && brew doctor
 
-echo "run brew update ..."
-
-git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch
-git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask fetch
-
+echo "brew update ..."
 which brew 2>/dev/null && brew update
 
-echo "run brew upgrade..."
+echo "brew upgrade..."
 which brew 2>/dev/null && brew upgrade
 
-echo "run brew install formulas ..."
+echo "install homebrew formulas ...."
+cat "${BASE_DIR}/apps/homebrew_formulas.txt" | xargs brew install
 
-sudo  mkdir -p /usr/local/sbin
-sudo chown -R $(whoami):admin /usr/local/sbin
+echo "install homebrew casks ...."
+cat "${BASE_DIR}/apps/homebrew_casks.txt" | xargs brew install --cask
 
-while read formula
-do
-    brew install ${formula} && brew upgrade ${formula} && brew link ${formula}
-done < ${BASE_DIR}/apps/homebrew_formulas.txt
-
-echo "run brew install casks ...."
-
-while read cask
-do
-     brew install --cask ${cask}
-done < ${BASE_DIR}/apps/homebrew_casks.txt
-
+echo "brew cleanup ..."
 brew cleanup
 
 echo "brew installed!"
-
-
-######################
-#    Python Pip3     #
-######################
-
-echo "step 4/4: installing pip3 ..."
-
-echo "run pip3 install ..."
-
-while read package
-do
-    pip3 install ${package}
-done < ${BASE_DIR}/apps/pip3_packages.txt
-
-echo "pip3 installed!"

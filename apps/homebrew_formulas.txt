@@ -2,6 +2,7 @@ asdf
 firebase-cli
 gcc
 git
+go
 node
 poetry
 python

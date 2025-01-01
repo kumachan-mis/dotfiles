@@ -23,9 +23,6 @@ export ASDF_GOLANG_MOD_VERSION_ENABLED=true
 # golang
 export PATH="$(go env GOPATH)/bin:$PATH"
 
-## Docker Desktop
-source $HOME/.docker/init-zsh.sh || true
-
 ## Google Cloud SDK
 source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
 source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
