@@ -1,5 +1,6 @@
 asdf
 firebase-cli
+java
 gcc
 git
 go

@@ -50,12 +50,19 @@ echo "brew upgrade..."
 which brew 2>/dev/null && brew upgrade
 
 echo "install homebrew formulas ...."
-cat "${BASE_DIR}/apps/homebrew_formulas.txt" | xargs brew install
+cat "${BASE_DIR}/apps/homebrew_formulas.txt" | xargs -I {} brew install {}
 
 echo "install homebrew casks ...."
-cat "${BASE_DIR}/apps/homebrew_casks.txt" | xargs brew install --cask
+cat "${BASE_DIR}/apps/homebrew_casks.txt" | xargs -I {} brew install --cask {}
 
 echo "brew cleanup ..."
 brew cleanup
 
 echo "brew installed!"
+
+####################
+#       Asdf       #
+####################
+
+echo "installing asdf plugins..."
+grep -v '^$' "${BASE_DIR}/dotfiles/tool-versions" | cut -d ' ' -f 1 | xargs -I {} asdf plugin add {}
