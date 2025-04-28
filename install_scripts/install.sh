@@ -68,3 +68,11 @@ echo "brew installed!"
 
 echo "installing asdf plugins..."
 grep -v '^$' "${BASE_DIR}/dotfiles/tool-versions" | cut -d ' ' -f 1 | xargs -I {} asdf plugin add {}
+echo "asdf plugins installed!"
+
+#######################
+#  VSCode Extensions  #
+#######################
+echo "installing vscode extensions ..."
+cat "${BASE_DIR}/apps/vscode_extensions.txt" | xargs -I {} code --install-extension {}
+echo "vscode extensions installed!"
