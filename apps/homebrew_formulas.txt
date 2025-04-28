@@ -5,6 +5,7 @@ gcc
 git
 go
 node
+openjdk
 poetry
 python
 yarn
